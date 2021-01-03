@@ -12,6 +12,7 @@ var audioContext //audio context to help us record
 var recordButton = document.getElementById("recordButton");
 var stopButton = document.getElementById("stopButton");
 var pauseButton = document.getElementById("pauseButton");
+var student_id = document.getElementById("student_id").getAttribute("value");
 
 //add events to those 2 buttons
 recordButton.addEventListener("click", startRecording);
@@ -110,7 +111,7 @@ function stopRecording() {
 
     //stop microphone access
     gumStream.getAudioTracks()[0].stop();
-
+    
     //create the wav blob and pass it on to createDownloadLink
     rec.exportWAV(createDownloadLink);
 }
@@ -156,7 +157,7 @@ function createDownloadLink(blob) {
           };
           var fd=new FormData();
           fd.append("audio_data",blob, filename);
-          xhr.open("POST","/",true);
+          xhr.open("POST","/homework/week/".concat(student_id).concat("/"), true);
           xhr.send(fd);
     })
     li.appendChild(document.createTextNode (" "))//add a space in between
@@ -167,10 +168,7 @@ function createDownloadLink(blob) {
         var old = document.getElementById("recordingsList").getElementsByTagName("li")[0]
         old.remove(old)
         recordingsList.appendChild(li);
-        console.log(1)
-        
     } else {
-        console.log(2)
         recordingsList.appendChild(li);
     }
 
