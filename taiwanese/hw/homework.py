@@ -14,6 +14,6 @@ def submit(week, student_id):
             f.save(audio)
         print('file uploaded successfully')
 
-        return render_template('index.html', student_id=student_id, equest="POST")
+        return render_template('assignment.html', week=week, student_id=student_id, equest="POST")
     else:
-        return render_template("index.html", student_id=student_id)
+        return render_template("assignment.html", week=week, student_id=student_id)
