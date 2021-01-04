@@ -1,7 +1,9 @@
 credentials:
     google:
-drive_folder_id:
+server:
+    output_folder:
+drive_folder_ids:
     taiwanese_home:
-    material_folder:
+    materials_folder:
 spread_sheet_id:
     student_list:
