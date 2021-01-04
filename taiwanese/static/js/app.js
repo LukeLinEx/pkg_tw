@@ -54,7 +54,7 @@ function startRecording() {
         audioContext = new AudioContext();
 
         //update the format 
-        document.getElementById("formats").innerHTML="Format: 1 channel pcm @ "+audioContext.sampleRate/1000+"kHz"
+        document.getElementById("formats").innerHTML="按下 Stop 以停止錄音"
 
         /*  assign to gumStream for later use  */
         gumStream = stream;
@@ -105,6 +105,7 @@ function stopRecording() {
 
     //reset button just in case the recording is stopped while paused
     pauseButton.innerHTML="Pause";
+    document.getElementById("formats").innerHTML="按下 Record 開始錄音";
 
     //tell the recorder to stop the recording
     rec.stop();

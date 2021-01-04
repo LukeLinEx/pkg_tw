@@ -11,8 +11,8 @@ def submit(week, student_id):
     if len(found)==0:
         raise ValueError("The student id is not found")
 
-    name = found[1]
-    email = found[2]
+    name = found[0][1]
+    email = found[0][2]
 
     if request.method == "POST":
         f = request.files['audio_data']
