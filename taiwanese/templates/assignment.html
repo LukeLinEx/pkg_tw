@@ -2,19 +2,20 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>台語課</title>
+    <title>大紐約台灣同鄉會台語課</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
-    <h1>台語課作業 - {{week}}</h1>
+    <h1>臺語課作業</h1> 
+    <p><strong>- Week {{week}}</strong></p>
 
+    <br>
     <div id="controls">
      <button id="recordButton">Record</button>
      <button id="pauseButton" disabled>Pause</button>
      <button id="stopButton" disabled>Stop</button>
     </div>
-    <div id="formats">Format: start recording to see sample rate</div>
-    <p><strong>Recordings:</strong></p>
+    <div id="formats">按下 Record 開始錄音</div>
     <ol id="recordingsList"></ol>
 
     <div id="student_id" value={{student_id}}>your name here</div>
@@ -22,8 +23,9 @@
     <!-- inserting these scripts at the end to be able to use all the elements in the DOM -->
     
     <audio controls>
-        <source src={{ url_for("static", filename = "audio.wav") }} type="audio/wav">
+        <source src={{ url_for("static", filename = "output/{}.wav".format(student_id) ) }} type="audio/wav">
     </audio>
+
     
     <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
     <script src="/static/js/app.js"></script>

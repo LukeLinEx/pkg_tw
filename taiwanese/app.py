@@ -6,7 +6,6 @@ from taiwanese.hw.homework import hw_bp
 app = Flask(__name__)
 app.register_blueprint(hw_bp, url_prefix='/homework')
 
-output_path = "/home/ubuntu/pkg_tw/taiwanese/output"
 
 
 @app.route("/", methods=['POST', 'GET'])
