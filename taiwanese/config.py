@@ -1,7 +1,7 @@
 import yaml
 
 
-config_path = "/home/ubuntu/pkg_tw/taiwanese/config.yaml"
+config_path = "./config.yaml"
 
 
 with open(config_path, 'r') as stream:
