@@ -1,8 +1,8 @@
+import os
 import yaml
 
 
-config_path = "./config.yaml"
-
+config_path = "/".join(os.path.abspath(__file__).split("/")[:-1])   + "/config.yaml"
 
 with open(config_path, 'r') as stream:
     config = yaml.safe_load(stream)

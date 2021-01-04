@@ -16,8 +16,8 @@ def submit(week, student_id):
     if len(found)==0:
         raise ValueError("The student id is not found")
 
-    name = found[1]
-    email = found[2]
+    name = found[0][1]
+    email = found[0][2]
 
     doc_id = [r for r in gdrive.list_files(material_g_folder_id) if r["name"] == '20200104'][0]["id"]
     paragraph = gdoc.load_doc(doc_id)

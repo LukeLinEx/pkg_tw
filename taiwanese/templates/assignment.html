@@ -19,13 +19,10 @@
     <div id="formats">按下 Record 開始錄音</div>
     <ol id="recordingsList"></ol>
 
-    <div id="student_id" value={{student_id}}>your name here</div>
+    <!-- Below we include some arguments for js functions -->
+    <div id="student_id" value={{student_id}}></div>
     <div id="ref_original_site" value="Simple Recorder.js demo with record, stop and pause - addpipe.com"></div>
     <!-- inserting these scripts at the end to be able to use all the elements in the DOM -->
-    
-    <audio controls>
-        <source src={{ url_for("static", filename = "output/{}.wav".format(student_id) ) }} type="audio/wav">
-    </audio>
 
     
     <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
