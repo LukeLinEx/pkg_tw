@@ -13,6 +13,7 @@ var recordButton = document.getElementById("recordButton");
 var stopButton = document.getElementById("stopButton");
 var pauseButton = document.getElementById("pauseButton");
 var student_id = document.getElementById("student_id").getAttribute("value");
+var week = document.getElementById("week").getAttribute("value");
 
 //add events to those 2 buttons
 recordButton.addEventListener("click", startRecording);
@@ -162,7 +163,7 @@ function createDownloadLink(blob) {
           };
           var fd=new FormData();
           fd.append("audio_data",blob, filename);
-          xhr.open("POST","/homework/week/".concat(student_id).concat("/"), true);
+          xhr.open("POST","/homework/".concat(week).concat("/").concat(student_id).concat("/"), true);
           xhr.send(fd);
     })
     li.appendChild(document.createTextNode (" "))//add a space in between

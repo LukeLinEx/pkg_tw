@@ -24,7 +24,7 @@ def submit(week, student_id):
 
     if request.method == "POST":
         f = request.files['audio_data']
-        tmp_file = "{}/{}.wav".format(output_folder, student_id)
+        tmp_file = "{}/{}_{}.wav".format(output_folder, week, student_id)
 
         with open(tmp_file, 'wb') as audio:
             f.save(audio)
