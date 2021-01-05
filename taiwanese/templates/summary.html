@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Thank you!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <p><strong>Hi {{name}}, here is the list of your old submissions:</strong></p><br><br>
+    {% for row in values %}
+    <div>
+        <a href="{{url_for('hw.show_old', student_id=row[0], week=row[1], name=name)}}">{{row[1]}}</a>
+    </div>
+    {% endfor %}
+  </body>
+</html>

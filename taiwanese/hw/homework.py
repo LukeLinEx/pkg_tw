@@ -6,7 +6,7 @@ from taiwanese.back.utils.drive import GDrive
 from taiwanese.back.utils.doc import GDoc
 
 import boto3
-from datetime import datetime
+from datetime import date
 
 hw_bp = Blueprint("hw", __name__)
 
@@ -40,7 +40,7 @@ def submit(week, student_id):
 
         s3_client.upload_file(tmp_file, Bucket="taiwanese", Key="{}/{}".format(week, student_id))
         os.remove(tmp_file)
-        hsb.add_submission(week, student_id, str(datetime.now()))
+        hsb.add_submission(week, student_id, str(date.today()))
 
         return render_template(
             'assignment.html', name=name, week=week, paragraph=paragraph,
@@ -51,7 +51,16 @@ def submit(week, student_id):
             student_id=student_id)
 
 
-@hw_bp.route("/thank/")
-def thank():
-    return render_template("thank.html")
+@hw_bp.route("/summary/<string:student_id>/")
+def list_old(student_id):
+    df = hsb.get_submission_df()
+    df = df.loc[df["student_id"]==student_id]
+    values = df.values
 
+    name = [d[1] for d in hsl.axv if d[0]==student_id][0]
+
+    return render_template("summary.html", name=name, values=values)
+
+@hw_bp.route("/submission/<string:student_id>/<string:week>/<string:name>")
+def show_old(student_id, week, name):
+    return render_template("listen.html", name=name, student_id=student_id, week=week)
