@@ -37,3 +37,9 @@ def submit(week, student_id):
         return render_template(
             "assignment.html", name=name, week=week, paragraph=paragraph,
             student_id=student_id)
+
+
+@hw_bp.route("/thank/")
+def thank():
+    return render_template("thank.html")
+

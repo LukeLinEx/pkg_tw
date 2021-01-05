@@ -66,4 +66,5 @@ class GDoc(object):
 
         doc = self.service.documents().get(documentId=doc_id).execute()
         doc_content = doc.get('body').get('content')
-        print(self.read_strucutural_elements(doc_content))
+        return self.read_strucutural_elements(doc_content)
+

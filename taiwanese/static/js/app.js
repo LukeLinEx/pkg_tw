@@ -154,6 +154,10 @@ function createDownloadLink(blob) {
           xhr.onload=function(e) {
               if(this.readyState === 4) {
                   console.log("Server returned: ",e.target.responseText);
+		  var success = document.getElementById("success");
+		  var a1 = document.createElement('a');
+		  a1.innerHTML='上傳完成，請至<a href="/homework/thank">此處</a>查看過去檔案';
+		  success.appendChild(a1);
               }
           };
           var fd=new FormData();
