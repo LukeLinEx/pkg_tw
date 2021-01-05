@@ -2,13 +2,18 @@ from flask import Flask
 from flask import request
 from flask import render_template
 from taiwanese.hw.homework import hw_bp
+from os.path import expanduser
 
 app = Flask(__name__)
 app.register_blueprint(hw_bp, url_prefix='/homework')
 
 
+@app.route("/")
+def msg():
+    home = expanduser("~")
+    return home
 
-@app.route("/", methods=['POST', 'GET'])
+@app.route("/index/", methods=['POST', 'GET'])
 def index():
     if request.method == "POST":
         f = request.files['audio_data']
