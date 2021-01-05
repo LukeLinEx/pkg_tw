@@ -61,6 +61,10 @@ def list_old(student_id):
 
     return render_template("summary.html", name=name, values=values)
 
+
 @hw_bp.route("/submission/<string:student_id>/<string:week>/<string:name>")
 def show_old(student_id, week, name):
+    tmp_file = "{}/{}.wav".format(week, student_id)
+    s3_client.download_file("taiwanese", "{}/{}".format(week, student_id), tmp_file)
+
     return render_template("listen.html", name=name, student_id=student_id, week=week)
