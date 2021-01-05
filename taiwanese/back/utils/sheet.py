@@ -50,6 +50,14 @@ class GSheet(object):
             valueInputOption=value_input_option, body=body
         ).execute()
 
+    def update_sheet(self, spreadsheet_id, sheet_name, values):
+        body = {
+            "values": values}
+
+        self.service.spreadsheets().values().update(
+            spreadsheetId=spreadsheet_id, range=sheet_name,
+            valueInputOption="USER_ENTERED", body=body).execute()
+
     def clear_rows(self, spreadsheet_id, sheet_name, nth, end=None):
         if not end:
             end = nth

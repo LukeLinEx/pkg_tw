@@ -10,3 +10,4 @@ with open(config_path, 'r') as stream:
 output_folder = config["server"]["output_folder"]
 g_cred_path = config["credentials"]["google"]
 material_g_folder_id = config["drive_folder_ids"]["materials_folder"]
+spreadsheet_id = config["spread_sheet_id"]["student_list"]

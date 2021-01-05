@@ -1,14 +1,17 @@
 from taiwanese.config import *
 from taiwanese.back.student_list import HandleStudentList
+from taiwanese.back.submission import HandleSubmission
 from flask import Blueprint, render_template, request
 from taiwanese.back.utils.drive import GDrive
 from taiwanese.back.utils.doc import GDoc
 
 import boto3
-from botocore.exceptions import ClientError
+from datetime import datetime
 
 hw_bp = Blueprint("hw", __name__)
+
 hsl = HandleStudentList(config_path)
+hsb = HandleSubmission()
 gdrive = GDrive(config_path)
 gdoc = GDoc(config_path)
 
@@ -37,6 +40,7 @@ def submit(week, student_id):
 
         s3_client.upload_file(tmp_file, Bucket="taiwanese", Key="{}/{}".format(week, student_id))
         os.remove(tmp_file)
+        hsb.add_submission(week, student_id, str(datetime.now()))
 
         return render_template(
             'assignment.html', name=name, week=week, paragraph=paragraph,
