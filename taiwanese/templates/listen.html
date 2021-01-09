@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
 
-  <body>
-  <p>Hello, {{name}}</p>
-  <!-- <p>{{   url_for("static", filename="output/{}_{}.wav".format(week, student_id))         }}</p> -->
+  <body onload="deleteTMPFile({{audio_file}});">
+    <p>Hello, {{name}}</p>
+    <!-- <p>{{   url_for("static", filename="output/{}_{}.wav".format(week, student_id))         }}</p> -->
     <audio controls>
 	    <source src={{url_for("static", filename="output/{}".format(audio_file))}} type="audio/wav">
     </audio>
+
+  <script src="/static/js/app.js"></script>
   </body>
 
 </html>

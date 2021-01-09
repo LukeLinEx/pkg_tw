@@ -11,16 +11,17 @@ from datetime import date, datetime
 
 hw_bp = Blueprint("hw", __name__)
 
-hsl = HandleStudentList(config_path)
-hsb = HandleSubmission()
-gdrive = GDrive(config_path)
-gdoc = GDoc(config_path)
+gdrive = GDrive()
+gdoc = GDoc()
 
 aws_session = boto3.Session(profile_name='twta')
 s3_client = aws_session.client('s3')
 
 @hw_bp.route("/<string:week>/<string:student_id>/", methods=['GET', 'POST'])
 def submit(week, student_id):
+    hsl = HandleStudentList()
+    hsb = HandleSubmission()
+
     found = [doc for doc in hsl.active if doc[0] == student_id]
     if len(found)==0:
         raise ValueError("The student id is not found")
@@ -54,6 +55,9 @@ def submit(week, student_id):
 
 @hw_bp.route("/summary/<string:student_id>/")
 def list_old(student_id):
+    hsl = HandleStudentList()
+    hsb = HandleSubmission()
+
     df = hsb.get_submission_df()
     df = df.loc[df["student_id"]==student_id]
     values = df.values
@@ -71,10 +75,9 @@ def show_old(student_id, week, name):
 
     return render_template("listen.html", name=name, student_id=student_id, week=week, audio_file=audio_file)
 
+@hw_bp.route("/delete/<string:audio_file>")
+def delete(audio_file):
+    f2brm = "{}/{}".format(output_folder, audio_file)
+    os.remove(f2brm)
 
-@hw_bp.route("admin/student_list", methods=["POST"])
-def update_students():
-    hsl.get_student_lists()
-
-    return str(hsl.active)
-
+    return f2brm

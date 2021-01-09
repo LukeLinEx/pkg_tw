@@ -1,11 +1,12 @@
 import yaml
 from copy import deepcopy
 from bson.objectid import ObjectId
+from taiwanese.config import *
 import taiwanese.back.utils.sheet as sheet
 
 
 class HandleStudentList(object):
-    def __init__(self, config_path):
+    def __init__(self):
         self.gsheet = sheet.GSheet(config_path)
         with open(config_path, 'r') as stream:
             self.__config = yaml.safe_load(stream)

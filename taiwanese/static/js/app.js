@@ -118,6 +118,12 @@ function stopRecording() {
     rec.exportWAV(createDownloadLink);
 }
 
+function deleteTmpFile(fname){
+    var Http = new XMLHttpRequest();
+    Http.open("POST", "/homework/delete_tmp/".concat(fname));
+    Http.send();
+}
+
 function createDownloadLink(blob) {
 
     var url = URL.createObjectURL(blob);

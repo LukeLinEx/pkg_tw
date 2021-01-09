@@ -1,10 +1,11 @@
 import yaml
 from copy import deepcopy
+from taiwanese.config import *
 from taiwanese.back.utils.gapi_connection import get_drive_service
 
 
 class GDrive(object):
-    def __init__(self, config_path):
+    def __init__(self):
         with open(config_path, 'r') as stream:
             self.__config = yaml.safe_load(stream)
 
