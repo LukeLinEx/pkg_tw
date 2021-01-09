@@ -13,6 +13,7 @@ def msg():
     home = expanduser("~")
     return home
 
+
 @app.route("/index/", methods=['POST', 'GET'])
 def index():
     if request.method == "POST":
@@ -24,6 +25,7 @@ def index():
         return render_template('index.html', request="POST")   
     else:
         return render_template("index.html")
+
 
 if __name__ == "__main__":
     app.debug = True

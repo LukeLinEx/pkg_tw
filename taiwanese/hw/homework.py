@@ -5,8 +5,9 @@ from flask import Blueprint, render_template, request
 from taiwanese.back.utils.drive import GDrive
 from taiwanese.back.utils.doc import GDoc
 
+import time
 import boto3
-from datetime import date
+from datetime import date, datetime
 
 hw_bp = Blueprint("hw", __name__)
 
@@ -64,7 +65,16 @@ def list_old(student_id):
 
 @hw_bp.route("/submission/<string:student_id>/<string:week>/<string:name>")
 def show_old(student_id, week, name):
-    tmp_file = "{}/{}.wav".format(week, student_id)
+    tmp_file = "{}/{}{}{}.wav".format(output_folder, week, student_id, str(datetime.now()))
     s3_client.download_file("taiwanese", "{}/{}".format(week, student_id), tmp_file)
+    audio_file = tmp_file.split("/")[-1]
 
-    return render_template("listen.html", name=name, student_id=student_id, week=week)
+    return render_template("listen.html", name=name, student_id=student_id, week=week, audio_file=audio_file)
+
+
+@hw_bp.route("admin/student_list", methods=["POST"])
+def update_students():
+    hsl.get_student_lists()
+
+    return str(hsl.active)
+
