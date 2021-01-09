@@ -75,7 +75,7 @@ def show_old(student_id, week, name):
 
     return render_template("listen.html", name=name, student_id=student_id, week=week, audio_file=audio_file)
 
-@hw_bp.route("/delete/<string:audio_file>")
+@hw_bp.route("/delete_tmp/<string:audio_file>", methods=["POST"])
 def delete(audio_file):
     f2brm = "{}/{}".format(output_folder, audio_file)
     os.remove(f2brm)

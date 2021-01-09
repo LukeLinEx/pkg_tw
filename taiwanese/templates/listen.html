@@ -5,14 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
 
-  <body onload="deleteTMPFile({{audio_file}});">
+  <body onload="deleteTmpFile('{{audio_file}}');">
     <p>Hello, {{name}}</p>
     <!-- <p>{{   url_for("static", filename="output/{}_{}.wav".format(week, student_id))         }}</p> -->
     <audio controls>
 	    <source src={{url_for("static", filename="output/{}".format(audio_file))}} type="audio/wav">
     </audio>
 
-  <script src="/static/js/app.js"></script>
+  <script>
+    function deleteTmpFile(fname){
+        var Http = new XMLHttpRequest();
+        Http.open("POST", "/homework/delete_tmp/".concat(fname));
+        Http.send();}
+  </script>
   </body>
 
 </html>
