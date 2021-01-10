@@ -28,6 +28,11 @@ function startRecording() {
         https://addpipe.com/blog/audio-constraints-getusermedia/
     */
 
+    if(document.getElementById("recordingsList").getElementsByTagName("li").length==1) {
+        var old = document.getElementById("recordingsList").getElementsByTagName("li")[0]
+        old.remove(old)
+    }
+
     var constraints = { audio: true, video:false }
 
     /*
