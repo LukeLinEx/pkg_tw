@@ -17,11 +17,16 @@ class HandleSubmission(object):
     def spreadsheet_id(self):
         return self.__spreadsheet_id
 
-    def get_submission_df(self):
+    def get_submission_lst(self):
         lst = self.gsheet.get_sheet(
             spreadsheet_id=self.spreadsheet_id, sheet_name="submission")
 
-        return pd.DataFrame(lst["values"][1:], columns=lst["values"][0])
+        return lst["values"][0], lst["values"][1:]
+
+    def get_submission_df(self):
+        colnames, values = self.get_submission_lst()
+
+        return pd.DataFrame(values, columns=colnames)
 
     def add_submission(self, week, student_id, submission_time):
         df = self.get_submission_df()

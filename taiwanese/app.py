@@ -2,10 +2,12 @@ from flask import Flask
 from flask import request
 from flask import render_template
 from taiwanese.hw.homework import hw_bp
+from taiwanese.instructor.review import rv_bp
 from os.path import expanduser
 
 app = Flask(__name__)
 app.register_blueprint(hw_bp, url_prefix='/homework')
+app.register_blueprint(rv_bp, url_prefix='/review')
 
 
 @app.route("/")

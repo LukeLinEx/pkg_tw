@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- CSS only -->
+    <link rel="stylesheet" href=
+"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity=
+"sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+        crossorigin="anonymous">
+
+    <!-- JS, Popper.js, jquery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity=
+"sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous">
+    </script>
+
+    <script src=
+"https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity=
+"sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous">
+    </script>
+
+    <script src=
+"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity=
+"sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous">
+    </script>
+</head>
+
+<body>
+    <!-- Accordian wrapper starts -->
+    <div class="accordion" id="accordionExample">
+       {% for key, values in lst %}
+            <div class="card">
+                <div class="card-header" id="{{'heading{}'.format(key)}}">
+                    <h2 class="mb-0">
+                        <!-- data-toggle, data-target,
+                            aria-expanded, aria-controls
+                            attributes are used -->
+                        <!-- As a result the toggling
+                            functionality are intact -->
+                        <button class="btn btn-link collapsed"
+                            type="button" data-toggle="collapse"
+                            data-target="#{{'collapse{}'.format(key)}}"
+                            aria-expanded="false"
+                            aria-controls="{{'collapse{}'.format(key)}}">
+                            {{key}}
+                        </button>
+                    </h2>
+                </div>
+                <div id="{{'collapse{}'.format(key)}}" class="collapse"
+                    aria-labelledby="{{'heading{}'.format(key)}}"
+                    data-parent="#accordionExample">
+                    <div class="card-body">
+                        {% for doc in values.values %}
+                            <a href="{{doc[2]}}">{{doc[1]}}</a><br>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+       {% endfor %}
+<!--        <div class="card">-->
+<!--            <div class="card-header" id="headingFour">-->
+<!--                <h2 class="mb-0">-->
+<!--                    &lt;!&ndash; data-toggle, data-target, aria-expanded,-->
+<!--                        aria-controls attributes are used &ndash;&gt;-->
+<!--                    &lt;!&ndash; The toggling functionality are intact &ndash;&gt;-->
+<!--                    <button class="btn btn-link collapsed"-->
+<!--                        type="button" data-toggle="collapse"-->
+<!--                        data-target="#collapseFour"-->
+<!--                        aria-expanded="false"-->
+<!--                        aria-controls="collapseFour">-->
+<!--                        Collapsible Item 4-->
+<!--                    </button>-->
+<!--                </h2>-->
+<!--            </div>-->
+<!--            <div id="collapseFour" class="collapse"-->
+<!--                aria-labelledby="headingFour"-->
+<!--                data-parent="#accordionExample">-->
+<!--                <div class="card-body">-->
+<!--                    This is slot 4.-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+    </div>
+</body>
+
+</html>
