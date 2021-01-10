@@ -57,35 +57,13 @@
                     data-parent="#accordionExample">
                     <div class="card-body">
                         {% for doc in values.values %}
-                            <a href="{{doc[2]}}">{{doc[1]}}</a><br>
+                            <a href="{{doc[2]}}" target="_blank">{{doc[1]}}</a><br>
                         {% endfor %}
                     </div>
                 </div>
             </div>
        {% endfor %}
-<!--        <div class="card">-->
-<!--            <div class="card-header" id="headingFour">-->
-<!--                <h2 class="mb-0">-->
-<!--                    &lt;!&ndash; data-toggle, data-target, aria-expanded,-->
-<!--                        aria-controls attributes are used &ndash;&gt;-->
-<!--                    &lt;!&ndash; The toggling functionality are intact &ndash;&gt;-->
-<!--                    <button class="btn btn-link collapsed"-->
-<!--                        type="button" data-toggle="collapse"-->
-<!--                        data-target="#collapseFour"-->
-<!--                        aria-expanded="false"-->
-<!--                        aria-controls="collapseFour">-->
-<!--                        Collapsible Item 4-->
-<!--                    </button>-->
-<!--                </h2>-->
-<!--            </div>-->
-<!--            <div id="collapseFour" class="collapse"-->
-<!--                aria-labelledby="headingFour"-->
-<!--                data-parent="#accordionExample">-->
-<!--                <div class="card-body">-->
-<!--                    This is slot 4.-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
+
     </div>
 </body>
 
