@@ -157,7 +157,7 @@ function createDownloadLink(blob) {
     upload.href="#";
     upload.innerHTML = "您可以重錄數次，滿意點此上傳";
     upload.addEventListener("click", function(event){
-	  upload.innerHTML = "上傳中";
+	      upload.innerHTML = "上傳中，請稍候";
           var xhr=new XMLHttpRequest();
           xhr.onload=function(e) {
               if(this.readyState === 4) {

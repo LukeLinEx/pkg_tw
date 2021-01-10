@@ -17,6 +17,7 @@ gdoc = GDoc()
 aws_session = boto3.Session(profile_name='twta')
 s3_client = aws_session.client('s3')
 
+
 @hw_bp.route("/<string:week>/<string:student_id>/", methods=['GET', 'POST'])
 def submit(week, student_id):
     hsl = HandleStudentList()
@@ -74,6 +75,7 @@ def show_old(student_id, week, name):
     audio_file = tmp_file.split("/")[-1]
 
     return render_template("listen.html", name=name, student_id=student_id, week=week, audio_file=audio_file)
+
 
 @hw_bp.route("/delete_tmp/<string:audio_file>", methods=["POST"])
 def delete(audio_file):
