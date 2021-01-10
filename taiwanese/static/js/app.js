@@ -158,9 +158,9 @@ function createDownloadLink(blob) {
     // li.appendChild(link);
 
     //upload link
-    var upload = document.createElement('a');
+    var upload = document.createElement('BUTTON');
     upload.href="#";
-    upload.innerHTML = "您可以重錄數次，滿意點此上傳";
+    upload.innerHTML = "此鍵上傳";
     upload.addEventListener("click", function(event){
 	      upload.innerHTML = "上傳中，請稍候";
           var xhr=new XMLHttpRequest();
@@ -171,7 +171,7 @@ function createDownloadLink(blob) {
 		  var a1 = document.createElement('a');
 		  a1.innerHTML='<br>上傳完成，請至<a href="/homework/summary/'.concat(student_id).concat('/"').concat('>此處</a>查看過去檔案');
 		  success.appendChild(a1);
-		  upload.innerHTML = "您可以重錄數次，滿意點此上傳";
+		  upload.innerHTML = "此鍵上傳";
               }
           };
           var fd=new FormData();
@@ -179,7 +179,9 @@ function createDownloadLink(blob) {
           xhr.open("POST","/homework/".concat(week).concat("/").concat(student_id).concat("/"), true);
           xhr.send(fd);
     })
-    li.appendChild(document.createTextNode (" "))//add a space in between
+    var b1 = document.createElement('br');
+    li.appendChild(b1);
+    li.appendChild(document.createTextNode ("您可以重錄數次，滿意後按 "));//add a space in between
     li.appendChild(upload)//add the upload link to li
 
     //add the li element to the ol
