@@ -157,6 +157,7 @@ function createDownloadLink(blob) {
     upload.href="#";
     upload.innerHTML = "您可以重錄數次，滿意點此上傳";
     upload.addEventListener("click", function(event){
+	  upload.innerHTML = "上傳中";
           var xhr=new XMLHttpRequest();
           xhr.onload=function(e) {
               if(this.readyState === 4) {
@@ -165,6 +166,7 @@ function createDownloadLink(blob) {
 		  var a1 = document.createElement('a');
 		  a1.innerHTML='<br>上傳完成，請至<a href="/homework/summary/'.concat(student_id).concat('/"').concat('>此處</a>查看過去檔案');
 		  success.appendChild(a1);
+		  upload.innerHTML = "您可以重錄數次，滿意點此上傳";
               }
           };
           var fd=new FormData();

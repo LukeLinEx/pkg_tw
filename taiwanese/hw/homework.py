@@ -77,6 +77,7 @@ def show_old(student_id, week, name):
 
 @hw_bp.route("/delete_tmp/<string:audio_file>", methods=["POST"])
 def delete(audio_file):
+    time.sleep(5)
     f2brm = "{}/{}".format(output_folder, audio_file)
     os.remove(f2brm)
 
