@@ -33,6 +33,11 @@ function startRecording() {
         old.remove(old)
     }
 
+    if(document.getElementById("success").getElementsByTagName("a").length>0) {
+        var old = document.getElementById("success").getElementsByTagName("a")[0]
+        old.remove(old)
+    }
+
     var constraints = { audio: true, video:false }
 
     /*

@@ -5,6 +5,8 @@ from flask import Blueprint, render_template, request
 from taiwanese.back.utils.drive import GDrive
 from taiwanese.back.utils.doc import GDoc
 
+from flask import Markup
+
 import time
 import boto3
 from datetime import date, datetime
@@ -32,6 +34,7 @@ def submit(week, student_id):
 
     doc_id = [r for r in gdrive.list_files(material_g_folder_id) if r["name"] == week][0]["id"]
     paragraph = gdoc.load_doc(doc_id)
+    paragraph = Markup(paragraph)
 
     if request.method == "POST":
         f = request.files['audio_data']
