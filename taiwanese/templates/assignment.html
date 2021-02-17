@@ -10,7 +10,17 @@
     <p><strong>Hi {{name}}! Welcome to the {{week}} homework!</strong></p>
     <p><strong>這是本週的讀本:</strong></p>
     <p>{{paragraph}}</p>
+
+    <hr>
+    <p>這是阿伯示範的錄音檔:</p>
+    <!-- <p>{{   url_for("static", filename="sample/{}.wav".format(week))         }}</p> -->
+    <audio controls>
+	    <source src={{url_for("static", filename="sample/{}".format(week))}} type="audio/wav">
+    </audio>
+
+    <hr>
     <br>
+
     <div id="controls">
      <button id="recordButton">Record</button>
      <button id="pauseButton" disabled>Pause</button>
